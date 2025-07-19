@@ -18,7 +18,7 @@ input.addEventListener("input", (e) => {
   numValue = value ? parseInt(value) : 5;
 });
 
-const states = new Array(10).fill("");
+const states = new Array(20).fill("");
 box.innerHTML = states.map(() => `<div class='boxs'></div>`).join("");
 
 // Search handler
