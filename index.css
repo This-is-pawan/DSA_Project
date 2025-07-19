@@ -114,7 +114,7 @@ p {
 .bubble_sort {
   margin: 1rem auto;
   width: 100%;
-  height: 300px;
+  height: 350px;
   box-shadow: 2px 2px 5px pink;
    transition: all 3s ease;
 }
@@ -131,7 +131,7 @@ p {
 }
 .graph_grid {
   width: 100%;
-  height: 200px;
+  height: 300px;
   padding: 10px;
   display: flex;
   align-items: flex-end; 
