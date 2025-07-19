@@ -20,7 +20,7 @@ body {
   height: 100%;
   box-shadow: 2px 2px 5px pink;
   position: relative;
-  padding: 1rem;
+  padding: 2rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 0;
@@ -121,7 +121,6 @@ p {
 .graph {
    width: 35px;
   transition: all 3s ease;
-
   margin: 4px ;
   text-align: center;
   padding: 3px;
