@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Stack UI</title>
+ <style>
+  button {
+   background: pink;
+   border: none;
+   padding: 7px;
+   border-radius: 5px;
+   cursor: pointer;
+   display: grid;
+   margin: 3px;
+  }
+
+  .push_btn_add {
+   background: yellow;
+  }
+
+  .pop_btn_add {
+   background: rgb(97, 74, 143);
+  }
+
+  .user {
+   width: auto;
+   box-shadow: 2px 2px 5px pink;
+   text-align: justify;
+   padding: 5px;
+   margin-bottom: 4px;
+  }
+
+  .box {
+   width: 200px;
+   height: 350px;
+   margin: 2rem auto;
+   border: 1px dotted black;
+   border-top: none;
+   padding: 4px;
+   overflow-y: auto;
+  }
+
+  .stack_empty,
+  .stack_full {
+   display: none;
+   font-family: 'Lucida Sans', sans-serif;
+   text-align: center;
+   color: red;
+  }
+
+  .show {
+   display: block;
+  }
+ </style>
+</head>
+
+<body>
+
+ <input class="pushElement" type="text" placeholder="Push element">
+ <input class="popElement" type="text" placeholder="Pop (not used)">
+ <button class="push_btn">Push</button>
+ <button class="pop_btn">Pop</button>
+
+ <div style="text-align: center; font-size: 1.3rem; padding: 4px;">
+  <p class="stack_empty">Stack is empty</p>
+  <p class="stack_full">Stack is full</p>
+  <div class="box"></div>
+  <p>Stack</p>
+ </div>
+
+ <script>
+  let data = [];
+  const max = 8;
+
+  const pushvalue = document.querySelector('.pushElement');
+  const popvalue = document.querySelector('.popElement');
+  const pushBtn = document.querySelector('.push_btn');
+  const popBtn = document.querySelector('.pop_btn');
+  const stack_full = document.querySelector('.stack_full');
+  const stack_empty = document.querySelector('.stack_empty');
+  const box = document.querySelector('.box');
+
+  pushBtn.addEventListener('click', () => {
+   const value = pushvalue.value.trim();
+   if (!value) {
+    alert("Please enter a value before pushing!");
+    return;
+   }
+
+   if (data.length >= max) {
+    stack_full.classList.add('show');
+   } else {
+    data.push(value);
+    updateBox();
+    
+    stack_full.classList.remove('show');
+    stack_empty.classList.remove('show');
+   }
+
+   pushBtn.classList.add('push_btn_add');
+   popBtn.classList.remove('pop_btn_add');
+  });
+
+  popBtn.addEventListener('click', () => {
+   if (data.length === 0) {
+    stack_empty.classList.add('show');
+   } else {
+    data.pop();
+    updateBox();
+    stack_empty.classList.remove('show');
+    stack_full.classList.remove('show');
+   }
+
+   popBtn.classList.add('pop_btn_add');
+   pushBtn.classList.remove('push_btn_add');
+  });
+
+  function updateBox() {
+   box.innerHTML = data.map((item, index) => `<div class='user'>${index + 1}) ${item}</div>`).join('');
+  }
+ </script>
+
+</body>
+
+</html>
 
