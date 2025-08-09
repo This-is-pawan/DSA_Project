@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1 {
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    input {
+      border: none;
+      background: pink;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      letter-spacing: 2px;
+    }
+
+    .lines {
+      width: 300px;
+      margin: 2rem auto;
+      height: 400px;
+      border: 1px solid;
+      border-top: none;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      padding: 0 3px;
+
+    }
+
+    .item {
+      box-shadow: 2px 2px 5px pink;
+      margin: 2px;
+    }
+
+    .show {
+      text-align: center;
+
+    }
+    .empty_box{
+       text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Queue is linear type DS -->
+  <h1>Queue</h1>
+  <div>
+    <input type="text" placeholder="enter value for Queue ">
+    <button class="btn_first">EnQueue</button>
+    <button class="btn_second">DeQueue</button>
+  </div>
+  <h4 class="show"></h4>
+  <h4 class="empty_box"></h4>
+  <h3 class="lines"></h3>
+
+  <script>
+
+    let input = document.querySelector('input');
+    let btn_first = document.querySelector('.btn_first');
+    let btn_second = document.querySelector('.btn_second');
+    let show = document.querySelector('.show')
+    let line = document.querySelector('.lines');
+    // console.log(line);
+let empty_box=document.querySelector('.empty_box')
+
+
+
+
+    let Queue = [];
+    let max_size = 8;
+    let current_size = Queue.length;
+
+    btn_first.addEventListener('click', () => {
+      let inputes = input.value||parseInt(input.value)
+      EnQuenue(inputes)
+      display(Queue)
+    })
+    btn_second.addEventListener('click', () => {
+      DeQueue(Queue)
+
+    })
+
+    function EnQuenue(x) {
+      if (current_size >= max_size) {
+        
+        show.innerHTML = 'Queue is full'
+      } else {
+        empty_box.innerHTML=''
+
+        Queue[current_size] = x;
+        current_size++
+      }
+
+    }
+    function display(Queues) {
+
+      console.log(Queues);
+      line.innerHTML = Queues.map((item, index) => {
+        return `<div class='item'> ${index + 1} ) ${item||index} </div>`
+      }).join("");
+    };
+    
+    function DeQueue(y) {
+      
+      
+      for (let i = 0; i < y.length; i++) {
+        if (y[i] >= current_size) {
+          y[i] = y[i + 1]  
+          
+        }
+        
+      }
+      display(y)
+      
+      if (current_size==0) {
+       empty_box.innerHTML='Queue is empty'
+      } 
+      current_size--;
+      y.length = current_size;
+      show.innerHTML=''
+    }
+
+
+  </script>
+</body>
+
+</html>
